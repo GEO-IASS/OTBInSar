@@ -8,5 +8,5 @@ void RegisterTests()
   REGISTER_TEST(otbParallelPerpendicularBaselineFunctorNew);
   REGISTER_TEST(otbPlatformPositionToBaselineCalculatorNew);
   REGISTER_TEST(otbComplexInterpolateImageFunctionNew);
-  //REGISTER_TEST(otbMultivariateRationalTransformNew);
+  REGISTER_TEST(otbMultivariateRationalTransformNew);
 }

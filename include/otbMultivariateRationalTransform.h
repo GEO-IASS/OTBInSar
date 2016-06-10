@@ -199,14 +199,14 @@ public:
 
 
   /** Get the number of parameters */
-  virtual unsigned int GetNumberOfParameters() const
+  virtual unsigned long GetNumberOfParameters() const
   {
-	  unsigned int numberOfParameters = 0;
-      for(unsigned int dim = 0; dim < SpaceDimension; ++dim)
+	  unsigned long numberOfParameters = 0;
+      for(unsigned long dim = 0; dim < SpaceDimension; ++dim)
       {
-       unsigned int numeratorDegree = 1;
-       unsigned int denominatorDegree = 1;
-		  for(unsigned int idx = 0 ; idx < SpaceDimension ; ++idx)
+       unsigned long numeratorDegree = 1;
+       unsigned long denominatorDegree = 1;
+		  for(unsigned long idx = 0 ; idx < SpaceDimension ; ++idx)
 		  {
 			  numeratorDegree *=(m_NumeratorDegree->GetElement(dim)[idx]+1);
 			  denominatorDegree *=(m_DenominatorDegree->GetElement(dim)[idx]+1);
@@ -252,7 +252,7 @@ public:
 
 protected:
   MultivariateRationalTransform() : 
-		Superclass(SpaceDimension, SpaceDimension*4)
+		Superclass(SpaceDimension*4)
     {
 		m_NumeratorDegree = IndexContainerType::New();
 		m_DenominatorDegree = IndexContainerType::New();

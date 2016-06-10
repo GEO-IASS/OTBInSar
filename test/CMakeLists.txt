@@ -9,7 +9,7 @@ otbLengthOrientationBaselineFunctorNew.cxx
 otbParallelPerpendicularBaselineFunctorNew.cxx
 otbPlatformPositionToBaselineCalculatorNew.cxx
 otbComplexInterpolateImageFunctionNew.cxx
-#otbMultivariateRationalTransform.cxx
+otbMultivariateRationalTransform.cxx
 )
 
 add_executable(otbInSarTestDriver ${OTBInSarTests})
@@ -46,5 +46,5 @@ otb_add_test(NAME inTuPlatformPositionToBaselineCalculatorNew COMMAND otbInSarTe
 otb_add_test(NAME inTuComplexInterpolateImageFunctionNew COMMAND otbInSarTestDriver
   otbComplexInterpolateImageFunctionNew)
   
-#otb_add_test(NAME inTuMultivariateRationalTransformNew COMMAND otbInSarTestDriver
-#  otbMultivariateRationalTransformNew)
+otb_add_test(NAME inTuMultivariateRationalTransformNew COMMAND otbInSarTestDriver
+  otbMultivariateRationalTransformNew)
