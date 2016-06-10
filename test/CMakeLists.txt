@@ -7,6 +7,7 @@ otbBaselineFunctorBaseNew.cxx
 otbHorizontalVerticalBaselineFunctorNew.cxx
 otbHorizontalVerticalBaselineFunctorTest.cxx
 otbLengthOrientationBaselineFunctorNew.cxx
+otbLengthOrientationBaselineFunctorTest.cxx
 otbParallelPerpendicularBaselineFunctorNew.cxx
 otbPlatformPositionToBaselineCalculatorNew.cxx
 otbComplexInterpolateImageFunctionNew.cxx
@@ -35,13 +36,16 @@ otb_add_test(NAME inTuBaselineFunctorBaseNew COMMAND otbInSarTestDriver
 otb_add_test(NAME inTuHorizontalVerticalBaselineFunctorNew COMMAND otbInSarTestDriver
   otbHorizontalVerticalBaselineFunctorNew)
   
-  
 otb_add_test(NAME inTuHorizontalVerticalBaselineFunctorTest COMMAND otbInSarTestDriver
   otbHorizontalVerticalBaselineFunctorTest)
   
  
 otb_add_test(NAME inTuLengthOrientationBaselineFunctorNew COMMAND otbInSarTestDriver
   otbLengthOrientationBaselineFunctorNew)
+  
+otb_add_test(NAME inTuLengthOrientationBaselineFunctorTest COMMAND otbInSarTestDriver
+  otbLengthOrientationBaselineFunctorTest)
+  
   
 otb_add_test(NAME inTuParallelPerpendicularBaselineFunctorNew COMMAND otbInSarTestDriver
   otbParallelPerpendicularBaselineFunctorNew)
