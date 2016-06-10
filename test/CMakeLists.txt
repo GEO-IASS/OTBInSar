@@ -5,6 +5,7 @@ otbInSarTestDriver.cxx
 otbBaselineCalculatorNew.cxx
 otbBaselineFunctorBaseNew.cxx
 otbHorizontalVerticalBaselineFunctorNew.cxx
+otbHorizontalVerticalBaselineFunctorTest.cxx
 otbLengthOrientationBaselineFunctorNew.cxx
 otbParallelPerpendicularBaselineFunctorNew.cxx
 otbPlatformPositionToBaselineCalculatorNew.cxx
@@ -33,6 +34,11 @@ otb_add_test(NAME inTuBaselineFunctorBaseNew COMMAND otbInSarTestDriver
   
 otb_add_test(NAME inTuHorizontalVerticalBaselineFunctorNew COMMAND otbInSarTestDriver
   otbHorizontalVerticalBaselineFunctorNew)
+  
+  
+otb_add_test(NAME inTuHorizontalVerticalBaselineFunctorTest COMMAND otbInSarTestDriver
+  otbHorizontalVerticalBaselineFunctorTest)
+  
  
 otb_add_test(NAME inTuLengthOrientationBaselineFunctorNew COMMAND otbInSarTestDriver
   otbLengthOrientationBaselineFunctorNew)
