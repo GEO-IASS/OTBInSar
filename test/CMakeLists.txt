@@ -4,11 +4,10 @@ set(OTBInSarTests
 otbInSarTestDriver.cxx
 otbBaselineCalculatorNew.cxx
 otbBaselineFunctorBaseNew.cxx
-
-#otbHorizontalVerticalBaselineFunctorNew.cxx
-#otbLengthOrientationBaselineFunctorNew.cxx
-#otbParallelPerpendicularBaselineFunctorNew.cxx
-#otbPlatformPositionToBaselineCalculatorNew.cxx
+otbHorizontalVerticalBaselineFunctorNew.cxx
+otbLengthOrientationBaselineFunctorNew.cxx
+otbParallelPerpendicularBaselineFunctorNew.cxx
+otbPlatformPositionToBaselineCalculatorNew.cxx
 )
 
 add_executable(otbInSarTestDriver ${OTBInSarTests})
@@ -30,14 +29,14 @@ otb_add_test(NAME inTuBaselineCalculatorNew COMMAND otbInSarTestDriver
 otb_add_test(NAME inTuBaselineFunctorBaseNew COMMAND otbInSarTestDriver
   otbBaselineFunctorBaseNew)
   
-#otb_add_test(NAME inTuHorizontalVerticalBaselineFunctorNew COMMAND otbInSarTestDriver
-#  otbHorizontalVerticalBaselineFunctorNew)
+otb_add_test(NAME inTuHorizontalVerticalBaselineFunctorNew COMMAND otbInSarTestDriver
+  otbHorizontalVerticalBaselineFunctorNew)
+ 
+otb_add_test(NAME inTuLengthOrientationBaselineFunctorNew COMMAND otbInSarTestDriver
+  otbLengthOrientationBaselineFunctorNew)
   
-#otb_add_test(NAME inTuLengthOrientationBaselineFunctorNew COMMAND otbInSarTestDriver
-#  otbLengthOrientationBaselineFunctorNew)
+otb_add_test(NAME inTuParallelPerpendicularBaselineFunctorNew COMMAND otbInSarTestDriver
+  otbParallelPerpendicularBaselineFunctorNew)
   
-#otb_add_test(NAME inTuParallelPerpendicularBaselineFunctorNew COMMAND otbInSarTestDriver
-#  otbParallelPerpendicularBaselineFunctorNew)
-  
-#otb_add_test(NAME inTuPlatformPositionToBaselineCalculatorNew COMMAND otbInSarTestDriver
-#  otbPlatformPositionToBaselineCalculatorNew)
+otb_add_test(NAME inTuPlatformPositionToBaselineCalculatorNew COMMAND otbInSarTestDriver
+  otbPlatformPositionToBaselineCalculatorNew)
