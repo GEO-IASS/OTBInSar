@@ -13,6 +13,9 @@ otbParallelPerpendicularBaselineFunctorTest.cxx
 otbPlatformPositionToBaselineCalculatorNew.cxx
 otbComplexInterpolateImageFunctionNew.cxx
 otbMultivariateRationalTransform.cxx
+
+otbPlatformPositionToBaselineCalculatorTest.cxx
+otbBaselineCalculatorTest.cxx
 )
 
 add_executable(otbInSarTestDriver ${OTBInSarTests})
@@ -62,3 +65,21 @@ otb_add_test(NAME inTuComplexInterpolateImageFunctionNew COMMAND otbInSarTestDri
   
 otb_add_test(NAME inTuMultivariateRationalTransformNew COMMAND otbInSarTestDriver
   otbMultivariateRationalTransformNew)
+
+
+IF(OTB_DATA_USE_LARGEINPUT)
+
+otb_add_test(NAME inTvPlatformPositionToBaselineCalculatorTest COMMAND otbInSarTestDriver
+otbPlatformPositionToBaselineCalculatorTest
+	LARGEINPUT{TERRASARX/2008-03-10_GrandCanyon_SSC/TSX1_SAR__SSC______SM_S_SRA_20080310T133220_20080310T133228/IMAGEDATA/IMAGE_HH_SRA_strip_011.cos}
+	LARGEINPUT{TERRASARX/2008-03-21_GrandCanyon_SSC/TSX1_SAR__SSC______SM_S_SRA_20080321T133220_20080321T133228/IMAGEDATA/IMAGE_HH_SRA_strip_011.cos}
+)
+
+otb_add_test(NAME inTvBaselineCalculatorTest COMMAND otbInSarTestDriver
+otbBaselineCalculatorTest
+	LARGEINPUT{TERRASARX/2008-03-10_GrandCanyon_SSC/TSX1_SAR__SSC______SM_S_SRA_20080310T133220_20080310T133228/IMAGEDATA/IMAGE_HH_SRA_strip_011.cos}
+	LARGEINPUT{TERRASARX/2008-03-21_GrandCanyon_SSC/TSX1_SAR__SSC______SM_S_SRA_20080321T133220_20080321T133228/IMAGEDATA/IMAGE_HH_SRA_strip_011.cos}
+)
+
+
+ENDIF(OTB_DATA_USE_LARGEINPUT)
