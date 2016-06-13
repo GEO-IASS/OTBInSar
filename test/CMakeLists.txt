@@ -2,7 +2,10 @@ otb_module_test()
 
 set(OTBInSarTests
 otbInSarTestDriver.cxx
+
+#baseline tests
 otbBaselineCalculatorNew.cxx
+otbBaselineCalculatorTest.cxx
 otbBaselineFunctorBaseNew.cxx
 otbHorizontalVerticalBaselineFunctorNew.cxx
 otbHorizontalVerticalBaselineFunctorTest.cxx
@@ -11,11 +14,24 @@ otbLengthOrientationBaselineFunctorTest.cxx
 otbParallelPerpendicularBaselineFunctorNew.cxx
 otbParallelPerpendicularBaselineFunctorTest.cxx
 otbPlatformPositionToBaselineCalculatorNew.cxx
+otbPlatformPositionToBaselineCalculatorTest.cxx
 otbComplexInterpolateImageFunctionNew.cxx
+
+#basic filter tests
+otbModuloImageFilterTest.cxx
+
+#projection
 otbMultivariateRationalTransform.cxx
 
-otbPlatformPositionToBaselineCalculatorTest.cxx
-otbBaselineCalculatorTest.cxx
+
+# interpolation
+otbComplexInterpolateImageFunctionNew.cxx
+otbComplexInterpolateImageFunction.cxx
+#otbComplexResampleImageFilter.cxx
+otbRealResampleImageFilter.cxx
+otbGridIntersectionPointSetSourceTest.cxx
+otbDiracNormalizeZeroFrequencyCalculatorTest.cxx
+
 )
 
 add_executable(otbInSarTestDriver ${OTBInSarTests})
@@ -65,6 +81,18 @@ otb_add_test(NAME inTuComplexInterpolateImageFunctionNew COMMAND otbInSarTestDri
   
 otb_add_test(NAME inTuMultivariateRationalTransformNew COMMAND otbInSarTestDriver
   otbMultivariateRationalTransformNew)
+  
+otb_add_test(NAME inTvMultivariateRationalTransformTest COMMAND otbInSarTestDriver
+#  --compare-ascii ${NOTOL}
+#  ${BASELINE_FILES}/otbMultivariateRationalTransformOutput.txt
+#  ${TEMP}/otbMultivariateRationalTransformOutput.txt
+  otbMultivariateRationalTransformTest
+${TEMP}/otbMultivariateRationalTransformOutput.txt
+0 0
+1 1
+10 10
+-10 -10
+)
 
 
 IF(OTB_DATA_USE_LARGEINPUT)
@@ -83,3 +111,83 @@ otbBaselineCalculatorTest
 
 
 ENDIF(OTB_DATA_USE_LARGEINPUT)
+
+
+otb_add_test(NAME inTvModuloImageFilterTest COMMAND otbInSarTestDriver
+  otbModuloImageFilterTest)
+  
+  
+otb_add_test(NAME inTvComplexBlackmanWindowInterpolateImageFunction COMMAND otbInSarTestDriver
+#     --compare-ascii ${NOTOL}
+#                          ${BASELINE_FILES}/coRealBlackmanWindowInterpolateImageFunctionOutput.txt
+#                     ${TEMP}/coRealBlackmanWindowInterpolateImageFunctionOutput.txt
+          otbComplexInterpolateImageFunction
+                ${INPUTDATA}/prison_toulouse.tif
+                ${TEMP}/coRealBlackmanWindowInterpolateImageFunctionOutput.txt
+				0 # interpolation ID "Blackman"
+				3 # radius
+                0.01 # normalizeZeroFrequency
+                0.5 0.5
+                127.33 44.9
+                259.67 21.43
+                12.13 61.79
+                89.5 11
+                128 128
+                127.255 128.73
+                -1 -1
+                )
+                
+otb_add_test(NAME inTvComplexHammingWindowInterpolateImageFunction COMMAND otbInSarTestDriver
+#     --compare-ascii ${NOTOL}
+#                          ${BASELINE_FILES}/coComplexHammingWindowInterpolateImageFunctionOutput.txt
+#                     ${TEMP}/coComplexHammingWindowInterpolateImageFunctionOutput.txt
+          otbComplexInterpolateImageFunction
+                ${INPUTDATA}/prison_toulouse.tif
+                ${TEMP}/coComplexHammingWindowInterpolateImageFunctionOutput.txt
+				1 # interpolation ID "Hamming"
+				3 # radius
+                0.01 # normalizeZeroFrequency
+                0.5 0.5 
+				127.33 44.9
+                259.67 21.43
+                12.13 61.79
+                89.5 11
+                128 128
+                127.255 128.73
+                -1 -1
+                )
+                
+                
+#otb_add_test(NAME inTvComplexHammingWindowResampleImageFilter COMMAND otbInSarTestDriver
+##     --compare-ascii ${NOTOL}
+##                          ${BASELINE_FILES}/coComplexHammingWindowResampleImageFilterOutput.tif
+##                     ${TEMP}/coComplexHammingWindowResampleImageFilterOutput.tif
+        #otbComplexResampleImageFilter
+                #${INPUTDATA}/prison_toulouse.tif
+                #${TEMP}/coComplexHammingWindowResampleImageFilterOutput.tif
+				#0 # interpolation ID "Hamming"
+				#3 # radius
+                #0.00 # normalizeZeroFrequency
+                #)
+                
+otb_add_test(NAME inTvRealHammingWindowResampleImageFilter COMMAND otbInSarTestDriver
+#     --compare-ascii ${NOTOL}
+#                          ${BASELINE_FILES}/coComplexHammingWindowResampleImageFilterOutput.tif
+#                     ${TEMP}/coComplexHammingWindowResampleImageFilterOutput.tif
+        otbRealResampleImageFilter
+                ${INPUTDATA}/prison_toulouse.tif
+                ${TEMP}/coRealHammingWindowResampleImageFilterOutput.tif
+				0 # interpolation ID "Hamming"
+				3 # radius
+				)
+                
+otb_add_test(NAME inTvGridIntersectionPointSetSource COMMAND otbInSarTestDriver
+  otbGridIntersectionPointSetSourceTest)
+  
+otb_add_test(NAME inTvNormalizeZeroFrequencyCalculator COMMAND otbInSarTestDriver
+          otbDiracNormalizeZeroFrequencyCalculatorTest
+                2048
+				1024
+				0.24
+				0.325
+				)
